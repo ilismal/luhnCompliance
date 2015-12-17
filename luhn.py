@@ -15,29 +15,26 @@ def luhn_checksum(card_number):
 def is_luhn_valid(card_number):
     return luhn_checksum(card_number) == 0
 
-# There's no do-while in python, lazy workaround
-while True:
-    # Get the first value
+def readPAN():
+    # There's no do-while in python, lazy workaround
+    while True:
+    # Read the input
     # Check that's a number with 16 digits
-    try:
-        firstValue=int(raw_input('First PAN in range: '))
-        if (len(str(firstValue)) != 16):
-            print "PAN must be 16 chars long"
-        else:
-            break
-    except ValueError:
-        print("Not a number")
-# Same process for the second number
-# TODO: This should be a function
-while True:
-    try:
-        lastValue = int(raw_input(('Last PAN in range: ')))
-        if (len(str(lastValue)) != 16):
-            print "PAN must be 16 chars long"
-        else:
-            break
-    except ValueError:
-        print("Not a number")
+        try:
+            pan=int(raw_input('PAN: '))
+            if (len(str(pan)) != 16):
+                print "PAN must be 16 chars long"
+            else:
+                break
+        except ValueError:
+            print("Not a number")
+    return pan
+# There's no do-while in python, lazy workaround
+
+print "Please input the first PAN in range"
+firstValue = readPAN()
+print "Please input the last PAN in range"
+lastValue = readPAN()
 
 # Swap variables if the first value is higher than the last
 if (firstValue > lastValue):
